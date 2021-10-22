@@ -1,0 +1,40 @@
+{
+
+    "Order": {
+        "getOrderById": "select * from Order where OrderId= ?",
+        "createOrder": "insert into Order VALUES (?,?,?,?)",
+        "deleteOrder": "DELETE FROM Order where OrderId=?",
+        "updateOrder": "SET OrderNumber=?,TotalAmount=?,OrderDate=? WHERE OrderId=?" 
+
+        
+
+    },
+
+    "Category": {
+        "getCategoryById": "select * from ProductCategory where CategoryId=?",
+        "createCategory": "insert into ProductCategory VALUES (?)",
+        "deleteCategory": "DELETE FROM ProductCategory where CategoryId=?",
+        "updateCategory": "SET Name=? WHERE CategoryId=?" 
+
+        
+
+    },
+    "Customer": {
+        "getCustomerById": "select * from Customer where CustomerId=?",
+        "createCustomer": "insert into Customer VALUES (?,?,?,?)",
+        "deleteCustomer": "DELETE FROM Customer where CustomerId=?",
+        "updateCustomer": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?" 
+
+        
+
+    }
+
+
+
+
+
+
+
+
+
+}
