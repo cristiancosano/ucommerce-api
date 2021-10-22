@@ -6,8 +6,20 @@ class CategoryModel extends Model{
         super();
     }
 
-    getById(id){
+    getAll(){
+        return this.pool.execute(this.queries.Category.getAll, []);
+    }
 
+    getById(id){
+        return this.pool.execute(this.queries.Category.getCategoryById, [ id ]);
+    }
+
+    update(category){
+        return this.pool.execute(this.queries.Category.update, [category.name, category.id]);
+    }
+
+    delete(id){
+        return this.pool.execute(this.queries.Category.delete, [ id ]);
     }
 
 }

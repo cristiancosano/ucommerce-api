@@ -12,9 +12,10 @@
 
     "Category": {
         "getCategoryById": "select * from ProductCategory where CategoryId=?",
-        "createCategory": "insert into ProductCategory VALUES (?)",
-        "deleteCategory": "DELETE FROM ProductCategory where CategoryId=?",
-        "updateCategory": "SET Name=? WHERE CategoryId=?" 
+        "getAll": "select * from ProductCategory",
+        "create": "insert into ProductCategory VALUES (?)",
+        "delete": "DELETE FROM ProductCategory where CategoryId=?",
+        "update": "UPDATE ProductCategory SET Name=? WHERE CategoryId=?"
 
         
 
