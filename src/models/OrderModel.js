@@ -6,10 +6,26 @@ class OrderModel extends Model{
         super();
     }
 
-    getById(id){
-
+    
+    getAll(){
+        return this.pool.execute(this.queries.Order.getAll, []);
     }
 
+    getById(id){
+        return this.pool.execute(this.queries.Order.getOrderById, [ id ]);
+    }
+
+    update(order){
+        return this.pool.execute(this.queries.Order.update, [order.OrderNumber,order.TotalAmount,order.OrderDate,order.CustomerId, order.id]);
+    }
+
+    delete(id){
+        return this.pool.execute(this.queries.Order.delete, [ id ]);
+    }
+
+    create(OrderNumber,TotalAmount,OrderDate,CustomerId){
+        return this.pool.execute(this.queries.Category.create, [OrderNumber,TotalAmount,OrderDate,CustomerId])
+    }
 }
 
 module.exports = OrderModel;

@@ -1,17 +1,18 @@
 {
 
     "Order": {
-        "getOrderById": "select * from Order where OrderId= ?",
-        "createOrder": "insert into Order VALUES (?,?,?,?)",
-        "deleteOrder": "DELETE FROM Order where OrderId=?",
-        "updateOrder": "SET OrderNumber=?,TotalAmount=?,OrderDate=? WHERE OrderId=?" 
+        "getById": "select * from Order where OrderId= ?",
+        "getAll": "select * from Order",
+        "create": "insert into Order VALUES (?,?,?,?)",
+        "delete": "DELETE FROM Order where OrderId=?",
+        "update": "SET OrderNumber=?,TotalAmount=?,OrderDate=? WHERE OrderId=?" 
 
         
 
     },
 
     "Category": {
-        "getCategoryById": "select * from ProductCategory where CategoryId=?",
+        "getById": "select * from ProductCategory where CategoryId=?",
         "getAll": "select * from ProductCategory",
         "create": "insert into ProductCategory VALUES (?)",
         "delete": "DELETE FROM ProductCategory where CategoryId=?",
@@ -21,10 +22,11 @@
 
     },
     "Customer": {
-        "getCustomerById": "select * from Customer where CustomerId=?",
-        "createCustomer": "insert into Customer VALUES (?,?,?,?)",
-        "deleteCustomer": "DELETE FROM Customer where CustomerId=?",
-        "updateCustomer": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?" 
+        "getById": "select * from Customer where CustomerId=?",
+        "getAll": "select * from Customer",
+        "create": "insert into Customer VALUES (?,?,?,?)",
+        "delete": "DELETE FROM Customer where CustomerId=?",
+        "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?" 
 
         
 

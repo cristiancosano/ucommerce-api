@@ -8,7 +8,8 @@ class CategoryController{
     }
 
     static create = (request, response) => {
-
+        const name = request.body.name;
+        this.categoryModel.create(name).then(([data]) => response.send(data));
     }
 
     static read = (request, response) =>{

@@ -22,6 +22,10 @@ class CategoryModel extends Model{
         return this.pool.execute(this.queries.Category.delete, [ id ]);
     }
 
+    create(name){
+        return this.pool.execute(this.queries.Category.create, [name])
+    }
+
 }
 
 module.exports = CategoryModel;
