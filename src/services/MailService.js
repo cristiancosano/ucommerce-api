@@ -5,7 +5,7 @@ class MailService{
     #transporter;
 
     constructor(){   
-        this.#transporter = this.initializeTransporter();
+        this.#transporter = this.#initializeTransporter();
     }
 
     #initializeTransporter(){

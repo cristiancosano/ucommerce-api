@@ -36,6 +36,6 @@
         "create": "insert into Customer VALUES (NULL,?,?,?,?)",
         "delete": "DELETE FROM Customer where CustomerId=?",
         "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?",
-        "getByData": "select * from Customer where Email=? and Password=?"
+        "auth": "select * from Customer where Email=? and Password=?"
     }
 }

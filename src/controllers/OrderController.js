@@ -3,12 +3,12 @@ const OrderModel = require('../models/OrderModel')
 class OrderController{
 
     static  orderModel = new OrderModel();
-    static index(request, response){
+    static index = (request, response) => {
         this.orderModel.getAll().then(([data]) => response.send(data));
 
     }
 
-    static create(request, response){
+    static create = (request, response) => {
         const OrderNumber = request.body.OrderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
         const TotalAmount = request.body.TotalAmount;
         const OrderDate = request.body.OrderDate;
@@ -17,12 +17,12 @@ class OrderController{
 
     }
 
-    static read(request, response){
+    static read = (request, response) => {
         const id = request.params.id;
         this.orderModel.getById(id).then(([data]) => response.send(data));
     }
 
-    static update(request, response){
+    static update = (request, response) => {
         const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
         const OrderNumber = request.body.OrderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
         const TotalAmount = request.body.TotalAmount;
@@ -33,7 +33,7 @@ class OrderController{
 
     }
 
-    static delete(request, response){
+    static delete = (request, response) => {
         const id = request.params.id;
         this.orderModel.delete(id).then(([data]) => response.send(data))
 

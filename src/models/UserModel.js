@@ -27,7 +27,7 @@ class UserModel extends Model{
 
     checkPassword(email,password)
     {
-        return this.pool.execute(this.queries.User.getByData, [email,password])
+        return this.pool.execute(this.queries.User.auth, [email,password])
     }
 
 }
