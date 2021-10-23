@@ -11,7 +11,7 @@ class DiscountModel extends Model{
     }
 
     getById(id){
-        return this.pool.execute(this.queries.Discount.getDiscountById, [ id ]);
+        return this.pool.execute(this.queries.Discount.getById, [ id ]);
     }
 
     update(Discount){

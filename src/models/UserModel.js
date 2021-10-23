@@ -11,7 +11,7 @@ class UserModel extends Model{
     }
 
     getById(id){
-        return this.pool.execute(this.queries.User.getUserById, [ id ]);
+        return this.pool.execute(this.queries.User.getById, [ id ]);
     }
 
     update(user){

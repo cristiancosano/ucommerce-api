@@ -3,7 +3,7 @@
         "getById": "select * from Order where OrderId= ?",
         "getAll": "select * from Order",
         "create": "insert into Order VALUES (?,?,?,?)",
-        "delete": "DELETE * FROM Order where OrderId=?",
+        "delete": "DELETE FROM Order where OrderId=?",
         "update": "SET OrderNumber=?,TotalAmount=?,OrderDate=? WHERE OrderId=?" 
     },
 
@@ -11,30 +11,30 @@
         "getById": "select * from ProductCategory where CategoryId=?",
         "getAll": "select * from ProductCategory",
         "create": "insert into ProductCategory VALUES (NULL, ?)",
-        "delete": "DELETE * FROM ProductCategory where CategoryId=?",
+        "delete": "DELETE FROM ProductCategory where CategoryId=?",
         "update": "UPDATE ProductCategory SET Name=? WHERE CategoryId=?"
     },
 
     "Discount": {
         "getById": "select * from Discount where DiscountId=?",
         "getAll": "select * from Discount",
-        "create": "insert into Discount VALUES (?)",
-        "delete": "DELETE * FROM Discount where DiscountId=?",
+        "create": "insert into Discount VALUES (NULL, ?)",
+        "delete": "DELETE FROM Discount where DiscountId=?",
         "update": "UPDATE Discount SET rebaja=? WHERE DiscountId=?"
     },
     "Product": {
         "getById": "select * from Product where ProductId=?",
         "getAll": "select * from Product",
-        "create": "insert into Product VALUES (?,?,?,?,?)",
-        "delete": "DELETE * FROM Product where ProductId=?",
+        "create": "insert into Product VALUES (NULL,?,?,?,?,?)",
+        "delete": "DELETE FROM Product where ProductId=?",
         "update": "UPDATE Product SET Name=?,CategoryId=?,UnitPrice=?,Image=?,DiscountId=? WHERE ProductId=?"
     },
 
-    "Customer": {
+    "User": {
         "getById": "select * from Customer where CustomerId=?",
         "getAll": "select * from Customer",
-        "create": "insert into Customer VALUES (?,?,?,?)",
-        "delete": "DELETE * FROM Customer where CustomerId=?",
+        "create": "insert into Customer VALUES (NULL,?,?,?,?)",
+        "delete": "DELETE FROM Customer where CustomerId=?",
         "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?",
         "getByData": "select * from Customer where Email=? and Password=?"
     }

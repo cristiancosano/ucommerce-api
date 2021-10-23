@@ -12,7 +12,7 @@ class OrderModel extends Model{
     }
 
     getById(id){
-        return this.pool.execute(this.queries.Order.getOrderById, [ id ]);
+        return this.pool.execute(this.queries.Order.getById, [ id ]);
     }
 
     update(order){

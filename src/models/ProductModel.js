@@ -15,13 +15,13 @@ class ProductModel extends Model{
     }
 
     update(product){
-        return this.pool.execute(this.queries.Product.update, [product.Name, product.UnitPrice, product.Image, product.id]);
+        return this.pool.execute(this.queries.Product.update, [product.Name, product.CategoryId, product.UnitPrice, product.Image, product.DiscountId, product.id]);
     }
 
     delete(id){
         return this.pool.execute(this.queries.Product.delete, [ id ]);
     }
-    create(Name, UnitPrice, Image, CategoryId, DiscountId){
+    create(Name, CategoryId, UnitPrice, Image, DiscountId){
         return this.pool.execute(this.queries.Product.create, [Name, CategoryId, UnitPrice, Image, DiscountId])
     }
 
