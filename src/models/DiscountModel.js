@@ -7,7 +7,7 @@ class DiscountModel extends Model{
     }
 
     getAll(){
-        return this.pool.execute(this.queries.Discount.getAll, []);
+        return this.pool.execute(this.queries.Discount.getAll);
     }
 
     getById(id){
@@ -15,7 +15,7 @@ class DiscountModel extends Model{
     }
 
     update(Discount){
-        return this.pool.execute(this.queries.Discount.update, [Discount.rebaja, Discount.id]);
+        return this.pool.execute(this.queries.Discount.update, [ Discount.rebaja, Discount.id ]);
     }
 
     delete(id){
@@ -23,7 +23,7 @@ class DiscountModel extends Model{
     }
 
     create(rebaja){
-        return this.pool.execute(this.queries.Discount.create, [rebaja])
+        return this.pool.execute(this.queries.Discount.create, [ rebaja ])
     }
 
 }

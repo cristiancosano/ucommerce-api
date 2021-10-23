@@ -8,7 +8,7 @@ class OrderModel extends Model{
 
     
     getAll(){
-        return this.pool.execute(this.queries.Order.getAll, []);
+        return this.pool.execute(this.queries.Order.getAll);
     }
 
     getById(id){
@@ -16,15 +16,15 @@ class OrderModel extends Model{
     }
 
     update(order){
-        return this.pool.execute(this.queries.Order.update, [order.OrderNumber,order.TotalAmount,order.OrderDate,order.CustomerId, order.id]);
+        return this.pool.execute(this.queries.Order.update, [order.orderNumber, order.totalAmount, order.orderDate, order.customerId, order.id]);
     }
 
     delete(id){
         return this.pool.execute(this.queries.Order.delete, [ id ]);
     }
 
-    create(OrderNumber,TotalAmount,OrderDate,CustomerId){
-        return this.pool.execute(this.queries.Order.create, [OrderNumber,TotalAmount,OrderDate,CustomerId])
+    create(orderNumber, totalAmount, drderDate,customerId){
+        return this.pool.execute(this.queries.Order.create, [orderNumber, totalAmount, orderDate, customerId])
     }
 }
 

@@ -7,7 +7,7 @@ class ProductModel extends Model{
     }
 
     getAll(){
-        return this.pool.execute(this.queries.Product.getAll, []);
+        return this.pool.execute(this.queries.Product.getAll);
     }
 
     getById(id){
@@ -15,18 +15,14 @@ class ProductModel extends Model{
     }
 
     update(product){
-        return this.pool.execute(this.queries.Product.update, [product.Name, product.CategoryId, product.UnitPrice, product.Image, product.DiscountId, product.id]);
+        return this.pool.execute(this.queries.Product.update, [product.name, product.categoryId, product.unitPrice, product.images, product.discountId, product.id]);
     }
 
     delete(id){
         return this.pool.execute(this.queries.Product.delete, [ id ]);
     }
-    create(Name, CategoryId, UnitPrice, Image, DiscountId){
-        return this.pool.execute(this.queries.Product.create, [Name, CategoryId, UnitPrice, Image, DiscountId])
-    }
-
-    checkPassword(){
-
+    create(name, categoryId, unitPrice, images, discountId){
+        return this.pool.execute(this.queries.Product.create, [name, categoryId, unitPrice, images, discountId])
     }
 
 }
