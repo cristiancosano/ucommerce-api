@@ -14,7 +14,7 @@
     "Category": {
         "getById": "select * from ProductCategory where CategoryId=?",
         "getAll": "select * from ProductCategory",
-        "create": "insert into ProductCategory VALUES (?)",
+        "create": "insert into ProductCategory VALUES (NULL, ?)",
         "delete": "DELETE * FROM ProductCategory where CategoryId=?",
         "update": "UPDATE ProductCategory SET Name=? WHERE CategoryId=?"
 
