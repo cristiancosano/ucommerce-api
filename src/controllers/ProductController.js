@@ -23,7 +23,7 @@ class ProductController{
         this.productModel.getById(id).then(([data]) => response.send(data));
     }
 
-    static update(request, response){
+    static update = (request, response) => {
         const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
         const Name = request.body.OrderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
         const CategoryId = request.body.CategoryId;
@@ -34,7 +34,7 @@ class ProductController{
 
     }
 
-    static delete(request, response){
+    static delete = (request, response) => {
         const id = request.params.id;
         this.productModel.delete(id).then(([data]) => response.send(data))
 
