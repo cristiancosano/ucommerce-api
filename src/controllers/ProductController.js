@@ -3,7 +3,7 @@ const ProductModel = require('../models/ProductModel')
 class ProductController{
 
     static  productModel = new ProductModel();
-    static index(request, response){
+    static index = (request, response) => {
         this.productModel.getAll().then(([data]) => response.send(data));
 
     }
@@ -18,7 +18,7 @@ class ProductController{
 
     }
 
-    static read(request, response){
+    static read = (request, response) => {
         const id = request.params.id;
         this.productModel.getById(id).then(([data]) => response.send(data));
     }

@@ -11,7 +11,7 @@ class ProductModel extends Model{
     }
 
     getById(id){
-        return this.pool.execute(this.queries.Product.getProductById, [ id ]);
+        return this.pool.execute(this.queries.Product.getById, [ id ]);
     }
 
     update(product){
