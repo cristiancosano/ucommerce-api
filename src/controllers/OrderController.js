@@ -1,4 +1,4 @@
-const UserModel = require('../models/OrderModel')
+const OrderModel = require('../models/OrderModel')
 
 class OrderController{
 
