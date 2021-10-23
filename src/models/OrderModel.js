@@ -24,7 +24,7 @@ class OrderModel extends Model{
     }
 
     create(OrderNumber,TotalAmount,OrderDate,CustomerId){
-        return this.pool.execute(this.queries.Category.create, [OrderNumber,TotalAmount,OrderDate,CustomerId])
+        return this.pool.execute(this.queries.Order.create, [OrderNumber,TotalAmount,OrderDate,CustomerId])
     }
 }
 

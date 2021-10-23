@@ -1,7 +1,7 @@
 CREATE TABLE `Discount`
 (
  `DiscountId` int Auto_increment NOT NULL ,
- `%`          int NOT NULL ,
+ `rebaja`          int NOT NULL ,
 
 PRIMARY KEY (`DiscountId`)
 );

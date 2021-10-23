@@ -13,7 +13,7 @@ class UserController{
         const Phone = request.body.Phone;
         const Email = request.body.Email;
         const Password = request.body.Password;
-        this.categoryModel.create(Name, Phone, Email, Password).then(([data]) => response.send(data));
+        this.userModel.create(Name, Phone, Email, Password).then(([data]) => response.send(data));
     }
 
     static read(request, response){
@@ -29,7 +29,7 @@ class UserController{
         const Email = request.body.Email;
         const Password = request.body.Password;
         const user = {id,Name,Phone,Email,Password}
-        this.orderModel.update(user).then(([data]) => response.send(data))
+        this.userModel.update(user).then(([data]) => response.send(data))
 
     }
 
