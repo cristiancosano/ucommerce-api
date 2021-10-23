@@ -11,7 +11,7 @@ class UserModel extends Model{
     }
 
     getById(id){
-        return this.pool.execute(this.queries.User.getUserById, [ id ]);
+        return this.pool.execute(this.queries.User.getById, [ id ]);
     }
 
     update(user){
@@ -27,7 +27,7 @@ class UserModel extends Model{
 
     checkPassword(email,password)
     {
-        return this.pool.execute(this.queries.User.getByData, [email,password])
+        return this.pool.execute(this.queries.User.auth, [email,password])
     }
 
 }

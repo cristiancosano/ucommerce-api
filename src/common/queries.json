@@ -30,12 +30,12 @@
         "update": "UPDATE Product SET Name=?,CategoryId=?,UnitPrice=?,Image=?,DiscountId=? WHERE ProductId=?"
     },
 
-    "Customer": {
+    "User": {
         "getById": "select * from Customer where CustomerId=?",
         "getAll": "select * from Customer",
-        "create": "insert into Customer VALUES (?,?,?,?)",
+        "create": "insert into Customer VALUES (NULL, ?,?,?,?)",
         "delete": "DELETE * FROM Customer where CustomerId=?",
         "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?",
-        "getByData": "select * from Customer where Email=? and Password=?"
+        "auth": "select * from Customer where Email=? and Password=?"
     }
 }
