@@ -1,14 +1,10 @@
 {
-
     "Order": {
         "getById": "select * from Order where OrderId= ?",
         "getAll": "select * from Order",
         "create": "insert into Order VALUES (?,?,?,?)",
         "delete": "DELETE * FROM Order where OrderId=?",
         "update": "SET OrderNumber=?,TotalAmount=?,OrderDate=? WHERE OrderId=?" 
-
-        
-
     },
 
     "Category": {
@@ -17,9 +13,6 @@
         "create": "insert into ProductCategory VALUES (NULL, ?)",
         "delete": "DELETE * FROM ProductCategory where CategoryId=?",
         "update": "UPDATE ProductCategory SET Name=? WHERE CategoryId=?"
-
-        
-
     },
 
     "Discount": {
@@ -28,9 +21,6 @@
         "create": "insert into Discount VALUES (?)",
         "delete": "DELETE * FROM Discount where DiscountId=?",
         "update": "UPDATE Discount SET rebaja=? WHERE DiscountId=?"
-
-        
-
     },
     "Product": {
         "getById": "select * from Product where ProductId=?",
@@ -38,9 +28,6 @@
         "create": "insert into Product VALUES (?,?,?,?,?)",
         "delete": "DELETE * FROM Product where ProductId=?",
         "update": "UPDATE Product SET Name=?,CategoryId=?,UnitPrice=?,Image=?,DiscountId=? WHERE ProductId=?"
-
-        
-
     },
 
     "Customer": {
@@ -50,16 +37,5 @@
         "delete": "DELETE * FROM Customer where CustomerId=?",
         "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?",
         "getByData": "select * from Customer where Email=? and Password=?"
-        
-
     }
-
-
-
-
-
-
-
-
-
 }
