@@ -38,6 +38,12 @@ class UserController{
         this.userModel.delete(id).then(([data]) => response.send(data));
 
     }
+    static checkPassword(request, response){
+        const Email = request.body.Email;
+        const Password = request.body.Password;
+        this.userModel.checkPassword(Email,Password).then(([data]) => response.send(data));
+
+    }
 }
 
 module.exports = UserController;

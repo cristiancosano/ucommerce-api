@@ -48,8 +48,8 @@
         "getAll": "select * from Customer",
         "create": "insert into Customer VALUES (?,?,?,?)",
         "delete": "DELETE * FROM Customer where CustomerId=?",
-        "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?" 
-
+        "update": "SET Name=?,Phone=?,Email=?,Password=? WHERE CustomerId=?",
+        "getByData": "select * from Customer where Email=? and Password=?"
         
 
     }

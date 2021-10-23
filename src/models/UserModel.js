@@ -22,11 +22,12 @@ class UserModel extends Model{
         return this.pool.execute(this.queries.User.delete, [ id ]);
     }
     create(name,phone,email,password){
-        return this.pool.execute(this.queries.Category.create, [name,phone,email,password])
+        return this.pool.execute(this.queries.User.create, [name,phone,email,password])
     }
 
-    checkPassword(){
-
+    checkPassword(email,password)
+    {
+        return this.pool.execute(this.queries.User.getByData, [email,password])
     }
 
 }
