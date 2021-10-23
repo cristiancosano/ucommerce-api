@@ -11,7 +11,7 @@ class CategoryModel extends Model{
     }
 
     getById(id){
-        return this.pool.execute(this.queries.Category.getCategoryById, [ id ]);
+        return this.pool.execute(this.queries.Category.getById, [ id ]);
     }
 
     update(category){

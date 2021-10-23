@@ -8,13 +8,13 @@ class ProductController{
 
     }
 
-    static create(request, response){
-        const Name = request.body.Name; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const CategoryId = request.body.CategoryId;
-        const UnitPrice = request.body.UnitPrice;
-        const Image = request.body.Image;
-        const DiscountId = request.body.DiscountId;
-        this.productModel.create(Name, CategoryId,UnitPrice,Image,DiscountId).then(([data]) => response.send(data))
+    static create = (request, response) => {
+        const name = request.body.name; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
+        const categoryId = request.body.categoryId;
+        const unitPrice = request.body.unitPrice;
+        const images = request.body.images;
+        const discountId = request.body.discountId;
+        this.productModel.create(name, categoryId, unitPrice, images, discountId).then(([data]) => response.send(data))
 
     }
 
