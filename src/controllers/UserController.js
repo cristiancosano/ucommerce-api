@@ -22,8 +22,8 @@ class UserController{
             Phone = request.body.phone; 
                } 
 
-        const Email = request.body.Email;
-        const Password = request.body.Password;
+        const Email = request.body.email;
+        const Password = request.body.password;
         this.userModel.create(Name, Phone, Email, Password).then(([data]) => response.send(data));
     }
 
@@ -47,8 +47,8 @@ class UserController{
             Phone = request.body.phone; 
                } 
 
-        const Email = request.body.Email;
-        const Password = request.body.Password;
+        const Email = request.body.email;
+        const Password = request.body.password;
         const user = {id,Name,Phone,Email,Password}
         this.userModel.update(user).then(([data]) => response.send(data))
 
