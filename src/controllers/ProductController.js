@@ -9,27 +9,14 @@ class ProductController{
     }
 
     static create = (request, response) => {
-        const Name = request.body.name; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const CategoryId = request.body.categoryId;
+        const name = request.body.name;
+        const categoryId = request.body.categoryId;
 
-         let UnitPrice = null; 
-         let Image = null;
-         let DiscountId = null;
-
-        if(request.body.unitPrice != undefined){
-            UnitPrice = request.body.unitPrice; 
-               }           
-      
-
-        if(request.body.Image != undefined){
-        Image = request.body.image;
-        }
+         const unitPrice = request.body.unitPrice || null; 
+         const images = request.body.images || null;
+         const discountId = request.body.discountId || null;
        
-        if(request.body.DiscountId != undefined){
-        DiscountId = request.body.discountId;
-        }
-       
-        this.productModel.create(Name, CategoryId,UnitPrice,Image,DiscountId).then(([data]) => response.send(data))
+        this.productModel.create(name, categoryId, unitPrice, images, discountId).then(([data]) => response.send(data))
 
     }
 
@@ -39,36 +26,20 @@ class ProductController{
     }
 
     static update = (request, response) =>{
-        const Name = request.body.name; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const CategoryId = request.body.categoryId;
-
-         let UnitPrice = null; 
-         let Image = null;
-         let DiscountId = null;
-
-        if(request.body.unitPrice != undefined){
-            UnitPrice = request.body.unitPrice; 
-               }           
-      
-
-        if(request.body.Image != undefined){
-        Image = request.body.image;
-        }
-       
-        if(request.body.DiscountId != undefined){
-        DiscountId = request.body.discountId;
-        }
         const id = request.params.id; 
+        const name = request.body.name;
+        const categoryId = request.body.categoryId;
+        const unitPrice = request.body.unitPrice || null; 
+        const images = request.body.images || null;
+        const discountId = request.body.discountId || null;
 
-        const product={id,Name,CategoryId,UnitPrice,Image,DiscountId}
+        const product={ id, name, categoryId, unitPrice, images, discountId }
         this.productModel.update(product).then(([data]) => response.send(data))
-
     }
 
     static delete = (request, response) =>{
         const id = request.params.id;
         this.productModel.delete(id).then(([data]) => response.send(data))
-
     }
 }
 

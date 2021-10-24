@@ -9,11 +9,11 @@ class OrderController{
     }
 
     static create = (request, response) => {
-        const OrderNumber = request.body.OrderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const TotalAmount = request.body.TotalAmount;
-        const OrderDate = request.body.OrderDate;
-        const CustomerId = request.body.CustomerId;
-        this.orderModel.create(OrderNumber,TotalAmount,OrderDate,CustomerId).then(([data]) => response.send(data))
+        const orderNumber = request.body.orderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
+        const totalAmount = request.body.totalAmount;
+        const orderDate = request.body.orderDate;
+        const customerId = request.body.customerId;
+        this.orderModel.create(orderNumber, totalAmount, orderDate, customerId).then(([data]) => response.send(data))
 
     }
 
@@ -24,13 +24,12 @@ class OrderController{
 
     static update = (request, response) => {
         const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
-        const OrderNumber = request.body.OrderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const TotalAmount = request.body.TotalAmount;
-        const OrderDate = request.body.OrderDate;
-        const CustomerId = request.body.CustomerId;
-        const order = {id,OrderNumber,TotalAmount,OrderDate,CustomerId}
+        const orderNumber = request.body.orderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
+        const totalAmount = request.body.totalAmount;
+        const orderDate = request.body.orderDate;
+        const customerId = request.body.customerId;
+        const order = {id, orderNumber, totalAmount, orderDate, customerId}
         this.orderModel.update(order).then(([data]) => response.send(data))
-
     }
 
     static delete = (request, response) => {

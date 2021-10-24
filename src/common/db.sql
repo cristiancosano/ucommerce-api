@@ -38,7 +38,7 @@ CREATE TABLE `Customer`
  `Name`       varchar(40) NULL ,
  `Phone`      varchar(20) NULL ,
  `Email`      varchar(40) NOT NULL ,
- `Password`   varchar(50) NOT NULL ,
+ `Password`   varchar(72) NOT NULL ,
 
 PRIMARY KEY (`CustomerId`),
 UNIQUE KEY `AK1_Customer_CustomerName` (`Name`)

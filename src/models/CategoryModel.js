@@ -7,7 +7,7 @@ class CategoryModel extends Model{
     }
 
     getAll(){
-        return this.pool.execute(this.queries.Category.getAll, []);
+        return this.pool.execute(this.queries.Category.getAll);
     }
 
     getById(id){
@@ -23,7 +23,7 @@ class CategoryModel extends Model{
     }
 
     create(name){
-        return this.pool.execute(this.queries.Category.create, [name])
+        return this.pool.execute(this.queries.Category.create, [ name ])
     }
 
 }
