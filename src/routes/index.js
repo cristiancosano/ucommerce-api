@@ -14,7 +14,4 @@ router.use('/products', productRouter);
 router.use('/discounts', discountRouter);
 router.use('/orders', orderRouter);
 
-
-
-
 module.exports = router;

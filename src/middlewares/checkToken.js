@@ -1,13 +1,12 @@
-const jwt = require('jsonwebtoken');
+const TokenService = require('../services/TokenService');
 
 const checkToken = (request, response, next) => {
-    let token;
-    if(request.body.token != undefined && (token = jwt.verify(request.body.token, process.env.SECRET_KEY))){
-        request.token = token;
+    const token = request.body.token;
+    if((request.token = TokenService.checkToken(token))){
         next();
     }
     else{
-        res.status(401).send("Unauthorized. You must send a valid token.");;
+        response.status(401).send("Unauthorized. You must send a valid token.");;
     }
 }
 

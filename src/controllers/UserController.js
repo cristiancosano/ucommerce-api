@@ -1,5 +1,4 @@
 const UserModel = require('../models/UserModel');
-const BCryptService = require('../services/BCryptService');
 const TokenService = require('../services/TokenService');
 const bcrypt = require('bcrypt')
 
