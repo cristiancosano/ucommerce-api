@@ -17,7 +17,6 @@ class ProductController{
          const discountId = request.body.discountId || null;
        
         this.productModel.create(name, categoryId, unitPrice, images, discountId).then(([data]) => response.send(data))
-
     }
 
     static read = (request, response) => {

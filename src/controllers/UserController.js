@@ -5,17 +5,18 @@ const bcrypt = require('bcrypt')
 
 class UserController{
 
+    static #bcryptSaltRounds = 10;
+
     static  userModel = new UserModel();
     static index = (request, response) => {
         this.userModel.getAll().then(([data]) => response.send(data));
     }
 
-    static create = (request, response) =>{
+    static create = async (request, response) =>{
         const name = request.body.name || null;
         const phone = request.body.phone || null;
         const email = request.body.email;
-        const password = BCryptService.encrypt(request.body.password);
-        console.log(email, request.body.password, password)
+        const password = await bcrypt.hash(request.body.email, this.#bcryptSaltRounds);
         if(email && password)
             this.userModel.create(name, phone, email, password).then(([data]) => response.send(data));
         else
@@ -28,13 +29,13 @@ class UserController{
 
     }
 
-    static update = (request, response)=>{
+    static update = async (request, response)=>{
         const id = request.params.id;
         
         const name = request.body.name || null;
         const phone = request.body.phone || null;
         const email = request.body.email;
-        const password = BCryptService.encrypt(request.body.password);
+        const password = await bcrypt.hash(request.body.password, this.#bcryptSaltRounds);
 
         const user = { id, name, phone, email, password }
         this.userModel.update(user).then(([data]) => response.send(data))
@@ -46,23 +47,18 @@ class UserController{
         this.userModel.delete(id).then(([data]) => response.send(data));
 
     }
-    static checkPassword = (request, response) => {
+
+    static checkPassword = async (request, response) => {
         const email = request.body.email;
-        const password = BCryptService.encrypt(request.body.password);
+        const password = request.body.password;
         this.userModel.getByEmail(email).then(([data]) => {
-            console.log(bcrypt.compareSync(password, data[0].Password))
+            bcrypt.compare(password, data[0].password).then(result => {
+                if(result)
+                    response.send({token: TokenService.buildToken(data[0]), status: 'ok'});
+                else
+                    response.status(400).send({token: null, status:'Invalid authentication'})
+            })
         });
-
-        
-        this.userModel.checkPassword(email, password).then(([data]) => {
-            if(data.length > 0){
-                response.send({token: TokenService.buildToken(data[0]), status: 'ok'});
-            }
-            else{
-                response.status(400).send({token: null, status:'Invalid authentication'})
-            }
-        });
-
     }
 }
 
