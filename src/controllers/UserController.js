@@ -33,7 +33,7 @@ class UserController{
 
     }
 
-    static update = (request, response)=>{
+    static update = (request, response) => {
         const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
         let Name = null;
 
@@ -49,7 +49,7 @@ class UserController{
 
         const Email = request.body.email;
         const Password = request.body.password;
-        const user = {id,Name,Phone,Email,Password}
+        const user = {Name,Phone,Email,Password,id}
         this.userModel.update(user).then(([data]) => response.send(data))
 
     }

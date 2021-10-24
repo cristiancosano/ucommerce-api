@@ -15,7 +15,7 @@ class UserModel extends Model{
     }
 
     update(user){
-        return this.pool.execute(this.queries.User.update, [user.name, user.phone, user.email, user.password, user.id]);
+        return this.pool.execute(this.queries.User.update, [user.Name, user.Phone, user.Email, user.Password, user.id]);
     }
 
     delete(id){
