@@ -9,12 +9,9 @@ class OrderController{
     }
 
     static create = (request, response) => {
-        const orderNumber = request.body.orderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const totalAmount = request.body.totalAmount;
-        const orderDate = request.body.orderDate;
+        const total = request.body.totalAmount;
         const customerId = request.body.customerId;
-        this.orderModel.create(orderNumber, totalAmount, orderDate, customerId).then(([data]) => response.send(data))
-
+        this.orderModel.create(total, customerId).then(([data]) => response.send(data))
     }
 
     static read = (request, response) => {
@@ -23,19 +20,16 @@ class OrderController{
     }
 
     static update = (request, response) => {
-        const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
-        const orderNumber = request.body.orderNumber; //Usas body para obtener los parametros de la petición (en PostMan Body->Raw->JSON)
-        const totalAmount = request.body.totalAmount;
-        const orderDate = request.body.orderDate;
+        const id = request.params.id;
+        const total = request.body.total;
         const customerId = request.body.customerId;
-        const order = {id, orderNumber, totalAmount, orderDate, customerId}
+        const order = {id, total, customerId}
         this.orderModel.update(order).then(([data]) => response.send(data))
     }
 
     static delete = (request, response) => {
         const id = request.params.id;
         this.orderModel.delete(id).then(([data]) => response.send(data))
-
     }
 }
 

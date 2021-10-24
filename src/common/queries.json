@@ -2,8 +2,8 @@
     "Order": {
         "getById": "select * from order where orderId = ?",
         "getAll": "select * from order",
-        "create": "insert into order (`orderNumber`, `total`, `customerId`) VALUES (?, ?, ?)",
-        "update": "UPDATE order SET orderNumber = ?, total = ? WHERE orderId = ?",
+        "create": "insert into order (`total`, `customerId`) VALUES (?, ?)",
+        "update": "UPDATE order SET total = ?, customerId= ? WHERE orderId = ?",
         "delete": "DELETE FROM order where orderId = ?"
     },
 

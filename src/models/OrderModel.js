@@ -16,15 +16,15 @@ class OrderModel extends Model{
     }
 
     update(order){
-        return this.pool.execute(this.queries.Order.update, [order.orderNumber, order.totalAmount, order.orderDate, order.customerId, order.id]);
+        return this.pool.execute(this.queries.Order.update, [order.total, order.customerId, order.id]);
     }
 
     delete(id){
         return this.pool.execute(this.queries.Order.delete, [ id ]);
     }
 
-    create(orderNumber, totalAmount, drderDate,customerId){
-        return this.pool.execute(this.queries.Order.create, [orderNumber, totalAmount, orderDate, customerId])
+    create(total, customerId){
+        return this.pool.execute(this.queries.Order.create, [total, customerId])
     }
 }
 
