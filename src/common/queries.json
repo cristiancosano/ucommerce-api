@@ -1,10 +1,10 @@
 {
     "Order": {
-        "getById": "select * from order where orderId = ?",
-        "getAll": "select * from order",
-        "create": "insert into order (`total`, `customerId`) VALUES (?, ?)",
-        "update": "UPDATE order SET total = ?, customerId= ? WHERE orderId = ?",
-        "delete": "DELETE FROM order where orderId = ?"
+        "getById": "SELECT * FROM `order` WHERE `orderId` = ?",
+        "getAll": "SELECT * FROM `order`",
+        "create": "INSERT INTO `order`(`total`, `customerId`) VALUES  VALUES (?, ?)",
+        "update": "UPDATE `order` SET `total`= ?,`customerId`= ? WHERE `orderId` = ?",
+        "delete": "DELETE FROM `order` WHERE `orderId` = ?"
     },
 
     "Category": {
