@@ -10,28 +10,19 @@ class OrderController{
 
     }
 
-    static create = (request, response) => {
+    static create = async (request, response) => {
         const total = request.body.total;
         const customerId = request.token.customerId;
-        this.orderModel.create(total, customerId).then(([data]) => response.send(data))
-
-
-
-        console.log(request.body.items)
-
         const items = request.body.items || null;
-        if(items != null)
-        {
-            for (x in items){
-                this.orderItemModel.create(x.unitPrice, x.quantity, ORDERID ,x.productId)
 
-
+        this.orderModel.create(total, customerId).then(([data]) => {
+            if(items != null && data != null && data.insertId != undefined){
+                for (x in items){
+                    this.orderItemModel.create(x.unitPrice, x.quantity, data.insertId, x.productId)
+                }
             }
-
-
-
-        }
-
+            response.send(data)
+        })
     }
 
     static read = (request, response) => {
