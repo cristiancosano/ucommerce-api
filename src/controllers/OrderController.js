@@ -1,9 +1,10 @@
 const OrderModel = require('../models/OrderModel')
-
+const OrderItemModel = require('../models/OrderItemModel')
 class OrderController{
 
     static  orderModel = new OrderModel();
-    
+    static orderItemModel = new OrderItemModel();
+
     static index = (request, response) => {
         this.orderModel.getAll().then(([data]) => response.send(data));
 
@@ -12,8 +13,24 @@ class OrderController{
     static create = (request, response) => {
         const total = request.body.total;
         const customerId = request.token.customerId;
-        console.log(request.body.items)
         this.orderModel.create(total, customerId).then(([data]) => response.send(data))
+
+
+
+        console.log(request.body.items)
+
+        const items = request.body.items || null;
+        if(items != null)
+        {
+            for (x in items){
+                this.orderItemModel.create(x.unitPrice, x.quantity, ORDERID ,x.productId)
+
+
+            }
+
+
+
+        }
 
     }
 
