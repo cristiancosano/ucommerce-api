@@ -51,12 +51,17 @@ class UserController{
         const email = request.body.email;
         const password = request.body.password;
         this.userModel.getByEmail(email).then(([data]) => {
-            bcrypt.compare(password, data[0].password).then(result => {
-                if(result)
-                    response.send({token: TokenService.buildToken(data[0]), status: 'ok'});
-                else
-                    response.status(400).send({token: null, status:'Invalid authentication'})
-            })
+            if(data.length > 0){
+                bcrypt.compare(password, data[0].password).then(result => {
+                    if(result)
+                        response.send({token: TokenService.buildToken(data[0]), status: 'ok'});
+                    else
+                        response.status(400).send({token: null, status:'Invalid authentication'})
+                });
+            }
+            else
+                response.status(400).send({token: null, status:'Invalid authentication'})
+
         });
     }
 }
