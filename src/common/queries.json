@@ -2,9 +2,17 @@
     "Order": {
         "getById": "SELECT * FROM `order` WHERE `orderId` = ?",
         "getAll": "SELECT * FROM `order`",
-        "create": "INSERT INTO `order`(`total`, `customerId`) VALUES  VALUES (?, ?)",
+        "create": "INSERT INTO `order`(`total`, `customerId`) VALUES (?, ?)",
         "update": "UPDATE `order` SET `total`= ?,`customerId`= ? WHERE `orderId` = ?",
         "delete": "DELETE FROM `order` WHERE `orderId` = ?"
+    },
+    "OrderItem": {
+        "getById": "SELECT * FROM `orderItem` WHERE `orderId` = ? AND `productId` = ?",
+        "getAll": "SELECT * FROM `orderItem` where `orderId`=?`",
+        "create": "INSERT INTO `orderItem`(`unitPrice`, `quantity`,`orderId`, `productId`) VALUES (?, ?,?,?)",
+        "update": "UPDATE `orderItem` SET `unitPrice`= ?,`quantity`= ? WHERE `orderId` = ? AND `productId` = ?",
+        "delete": "DELETE FROM `orderItem` WHERE `orderId` = ? AND `productId` = ?",
+        "deleteAll": "DELETE FROM `orderItem` WHERE `orderId` = ?"
     },
 
     "Category": {
