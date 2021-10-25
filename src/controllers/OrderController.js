@@ -19,9 +19,18 @@ class OrderController{
 
         this.orderModel.create(total, customerId).then(([data]) => {
             if(items != null && data != null && data.insertId != undefined){
-                for (x in items){
+                for (let x in items){
                     //Añade los productos con la orden a la lista
-                    this.productModel.getById(x.productId).then(([data2]) => this.orderItemModel.create(data2.unitPrice, x.quantity, data.insertId, x.productId))
+                    this.productModel.getById(items[x].productId).then(([product]) => 
+                    {
+
+                    if(product != undefined && items != undefined && data.insertId != undefined)
+                    {
+                  //  console.log(product[0].unitPrice,items[x].quantity,data.insertId,items[x].productId)
+                    this.orderItemModel.create(product[0].unitPrice, items[x].quantity, data.insertId, items[x].productId)
+                    }
+                    
+                    })
                 }
             }
             response.send(data)
@@ -36,18 +45,30 @@ class OrderController{
     static update = (request, response) => {
         const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
         const total = request.body.total;
-        const customerId = request.body.customerId;
-        const order = {id,total, customerId}
+        const customerId = request.token.customerId;
+        const items = request.body.items || null;
 
+        const order = {id,total, customerId}
 
         this.orderModel.update(order).then(([data]) => {
 
-            if(items != null && data != null && data.insertId != undefined){
-                this.OrderItemModel.deleteAll(id) //Elimina la lista de productos de la orden
+              if(items != null && data != null && id != undefined)
+              {
+
+                  this.orderItemModel.deleteAll(id) //Elimina la lista de productos de la orden
                
-                for (x in items){
-                    //Añade los productos con la orden a la lista
-                    this.productModel.getById(x.productId).then(([data2]) => this.orderItemModel.create(data2.unitPrice, x.quantity, data.insertId, x.productId))
+                  for (let x in items){
+                     //Añade los productos con la orden a la lista
+                        this.productModel.getById(items[x].productId).then(([product]) => 
+                        {
+
+                             if(product != undefined && items != undefined && id != undefined)
+                              {
+                                 //console.log(product[0].unitPrice,items[x].quantity,id,items[x].productId)
+                              this.orderItemModel.create(product[0].unitPrice, items[x].quantity, id, items[x].productId)
+                        }
+                    
+                       })
                 }
             }
             response.send(data)
@@ -56,11 +77,10 @@ class OrderController{
 
     static delete = (request, response) => {
         const id = request.params.id;
-        this.orderModel.delete(id).then(([data]) => {
-            
-            this.OrderItemModel.deleteAll(id) //Elimina la lista de productos de la orden
-
-            response.send(data)
+        this.orderItemModel.deleteAll(id).then(([data]) => { //Elimina la lista de productos de la orden
+       
+       
+            this.orderModel.delete(id).then((data2) => response.send(data))
 
         })
 
