@@ -11,7 +11,8 @@ class OrderController{
 
     static create = (request, response) => {
         const total = request.body.total;
-        const customerId = request.body.customerId;
+        const customerId = request.token.customerId;
+        console.log(request.body.items)
         this.orderModel.create(total, customerId).then(([data]) => response.send(data))
 
     }
