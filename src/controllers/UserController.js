@@ -6,7 +6,7 @@ class UserController{
 
     static #bcryptSaltRounds = 10;
 
-    static  userModel = new UserModel();
+    static userModel = new UserModel();
     static index = (request, response) => {
         this.userModel.getAll().then(([data]) => response.send(data));
     }

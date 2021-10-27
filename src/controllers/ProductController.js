@@ -40,6 +40,11 @@ class ProductController{
         const id = request.params.id;
         this.productModel.delete(id).then(([data]) => response.send(data))
     }
+
+    static search = (request, response) =>{
+        const text = request.body.text;
+        this.productModel.getByText(text).then(([data]) => response.send(data))
+    }
 }
 
 module.exports = ProductController;

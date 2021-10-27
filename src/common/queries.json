@@ -29,10 +29,12 @@
         "create": "insert into discount VALUES (NULL, ?)",
         "update": "UPDATE discount SET rebaja=? WHERE discountId=?",
         "delete": "DELETE FROM discount where discountId=?"
+
     },
     "Product": {
         "getById": "select * from product where productId=?",
         "getAll": "select * from product",
+        "getByText": "SELECT * , MATCH (name,description) AGAINST (?) AS puntuacion FROM product WHERE MATCH (name, description) AGAINST (?) ORDER BY puntuacion DESC LIMIT 50",
         "create": "insert into product VALUES (NULL, ?, ?, ?, ?, ?)",
         "update": "UPDATE product SET name=?, categoryId=?, unitPrice=?, images=?, discountId=? WHERE productId=?",
         "delete": "DELETE FROM product where productId=?"

@@ -6,6 +6,10 @@ class ProductModel extends Model{
         super();
     }
 
+    getByText(text){
+        return this.pool.execute(this.queries.Product.getByText, [text, text]);
+    }
+
     getAll(){
         return this.pool.execute(this.queries.Product.getAll);
     }

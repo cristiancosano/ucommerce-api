@@ -6,6 +6,7 @@ const router = Router();
 
 router.get('/', productController.index);
 router.post('/', checkToken, productController.create);
+router.get('/search', productController.search);
 router.get('/:id', productController.read);
 router.put('/:id', checkToken, productController.update);
 router.delete('/:id', checkToken, productController.delete);
