@@ -21,7 +21,7 @@ class ProductController{
 
     static read = (request, response) => {
         const id = request.params.id;
-        this.productModel.getById(id).then(([data]) => response.send(data));
+        this.productModel.getById(id).then(([data]) => (data.length > 0) ? response.send(data[0]) : response.status(404).send('Product not found'));
     }
 
     static update = (request, response) =>{

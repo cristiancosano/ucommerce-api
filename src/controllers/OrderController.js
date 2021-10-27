@@ -20,17 +20,12 @@ class OrderController{
         this.orderModel.create(total, customerId).then(([data]) => {
             if(items != null && data != null && data.insertId != undefined){
                 for (let x in items){
-                    //Añade los productos con la orden a la lista
-                    this.productModel.getById(items[x].productId).then(([product]) => 
-                    {
+                    this.productModel.getById(items[x].productId).then(([product]) => {
 
                     if(product != undefined && items != undefined && data.insertId != undefined)
-                    {
-                  //  console.log(product[0].unitPrice,items[x].quantity,data.insertId,items[x].productId)
-                    this.orderItemModel.create(product[0].unitPrice, items[x].quantity, data.insertId, items[x].productId)
-                    }
+                        this.orderItemModel.create(product[0].unitPrice, items[x].quantity, data.insertId, items[x].productId)
                     
-                    })
+                    });
                 }
             }
             response.send(data)
@@ -39,7 +34,7 @@ class OrderController{
 
     static read = (request, response) => {
         const id = request.params.id;
-        this.orderModel.getById(id).then(([data]) => response.send(data));
+        this.orderModel.getById(id).then(([data]) => (data.length > 0) ? response.send(data[0]) : response.status(404).send('Order not found'));
     }
 
     static update = (request, response) => {
