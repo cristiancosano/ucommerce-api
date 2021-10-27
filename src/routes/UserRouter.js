@@ -1,10 +1,9 @@
 const { Router } = require('express');
 const userController = require('../controllers/UserController');
 const checkToken = require('../middlewares/checkToken');
-const { body, param, checkSchema } = require('express-validator');
+const { checkSchema } = require('express-validator');
 const validateParams = require('../middlewares/validateParams');
 
-// const userValidation = require('../common/formValidations').User;
 const userValidation = require('../common/formValidations').User
 
 

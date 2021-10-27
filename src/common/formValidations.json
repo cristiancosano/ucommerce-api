@@ -68,13 +68,25 @@
         },
         "discountId":{
             "in": ["body"],
+            "errorMessage": "DiscountId must be an integer number",
             "isInt": true,
             "toInt": true
         },
         "categoryId":{
             "in": ["body"],
+            "errorMessage": "CategoryId must be an integer number",
             "isInt": true,
             "toInt": true
+        },
+        "text":{
+            "in": ["body"],
+            "errorMessage": "Text must be at least 3 ascii characters",
+            "isAscii": true,
+            "isLength": {
+                "options": {
+                    "min": 3
+                }
+            }
         }
 
     },

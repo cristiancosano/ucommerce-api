@@ -39,6 +39,9 @@ const Product = {
     },
     "delete":{
         "id": formValidations.Product.id
+    },
+    "search":{
+        "text": formValidations.Product.text
     }
 }; 
 
