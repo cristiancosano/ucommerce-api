@@ -12,9 +12,9 @@ class ProductController{
         const name = request.body.name;
         const categoryId = request.body.categoryId;
 
-         const unitPrice = request.body.unitPrice || null; 
-         const images = request.body.images || null;
-         const discountId = request.body.discountId || null;
+         const unitPrice = request.body.unitPrice; 
+         const images = request.body.images;
+         const discountId = request.body.discountId;
        
         this.productModel.create(name, categoryId, unitPrice, images, discountId).then(([data]) => response.send(data))
     }
@@ -28,9 +28,9 @@ class ProductController{
         const id = request.params.id; 
         const name = request.body.name;
         const categoryId = request.body.categoryId;
-        const unitPrice = request.body.unitPrice || null; 
-        const images = request.body.images || null;
-        const discountId = request.body.discountId || null;
+        const unitPrice = request.body.unitPrice; 
+        const images = request.body.images;
+        const discountId = request.body.discountId;
 
         const product={ id, name, categoryId, unitPrice, images, discountId }
         this.productModel.update(product).then(([data]) => response.send(data))

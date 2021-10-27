@@ -16,7 +16,7 @@ class UserController{
         const name = request.body.name || null;
         const phone = request.body.phone || null;
         const email = request.body.email;
-        const password = await bcrypt.hash(request.body.email, this.#bcryptSaltRounds);
+        const password = await bcrypt.hash(request.body.password, this.#bcryptSaltRounds);
         if(email && password)
             this.userModel.create(name, phone, email, password).then(([data]) => response.send(data));
         else
@@ -50,8 +50,11 @@ class UserController{
 
     static checkPassword = async (request, response) => {
         const email = request.body.email;
+        console.log(email)
         const password = request.body.password;
+        console.log(password)
         this.userModel.getByEmail(email).then(([data]) => {
+            console.log(data)
             if(data.length > 0){
                 bcrypt.compare(password, data[0].password).then(result => {
                     if(result)
