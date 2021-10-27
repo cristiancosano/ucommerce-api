@@ -7,6 +7,7 @@ class UserController{
     static #bcryptSaltRounds = 10;
 
     static userModel = new UserModel();
+
     static index = (request, response) => {
         this.userModel.getAll().then(([data]) => response.send(data));
     }
@@ -31,8 +32,8 @@ class UserController{
     static update = async (request, response)=>{
         const id = request.params.id;
         
-        const name = request.body.name || null;
-        const phone = request.body.phone || null;
+        const name = request.body.name;
+        const phone = request.body.phone;
         const email = request.body.email;
         const password = await bcrypt.hash(request.body.password, this.#bcryptSaltRounds);
 

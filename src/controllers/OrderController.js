@@ -54,16 +54,13 @@ class OrderController{
                
                   for (let x in items){
                      //Añade los productos con la orden a la lista
-                        this.productModel.getById(items[x].productId).then(([product]) => 
-                        {
+                        this.productModel.getById(items[x].productId).then(([product]) => {
 
-                             if(product != undefined && items != undefined && id != undefined)
-                              {
-                                 //console.log(product[0].unitPrice,items[x].quantity,id,items[x].productId)
+                            if(product != undefined && items != undefined && id != undefined){
                               this.orderItemModel.create(product[0].unitPrice, items[x].quantity, id, items[x].productId)
-                        }
+                            }
                     
-                       })
+                       });
                 }
             }
             response.send(data)
