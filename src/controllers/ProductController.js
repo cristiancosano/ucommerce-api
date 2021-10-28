@@ -11,12 +11,15 @@ class ProductController{
     static create = (request, response) => {
         const name = request.body.name;
         const categoryId = request.body.categoryId;
+        const description = request.body.description;
 
          const unitPrice = request.body.unitPrice; 
          const images = request.body.images;
          const discountId = request.body.discountId;
+
+         console.log(name, categoryId, unitPrice, images, discountId)
        
-        this.productModel.create(name, categoryId, unitPrice, images, discountId).then(([data]) => response.send(data))
+        this.productModel.create(name, description, categoryId, unitPrice, images, discountId).then(([data]) => response.send(data))
     }
 
     static read = (request, response) => {
@@ -31,8 +34,9 @@ class ProductController{
         const unitPrice = request.body.unitPrice; 
         const images = request.body.images;
         const discountId = request.body.discountId;
+        const description = request.body.description;
 
-        const product={ id, name, categoryId, unitPrice, images, discountId }
+        const product={ id, name, description, categoryId, unitPrice, images, discountId }
         this.productModel.update(product).then(([data]) => response.send(data))
     }
 

@@ -19,14 +19,15 @@ class ProductModel extends Model{
     }
 
     update(product){
-        return this.pool.execute(this.queries.Product.update, [product.name, product.categoryId, product.unitPrice, product.images, product.discountId, product.id]);
+        return this.pool.execute(this.queries.Product.update, [product.name, product.description, product.categoryId, product.unitPrice, product.images, product.discountId, product.id]);
     }
 
     delete(id){
         return this.pool.execute(this.queries.Product.delete, [ id ]);
     }
-    create(name, categoryId, unitPrice, images, discountId){
-        return this.pool.execute(this.queries.Product.create, [name, categoryId, unitPrice, images, discountId])
+    create(name, description, categoryId, unitPrice, images, discountId){
+        console.log(name, description, categoryId, unitPrice, images, discountId)
+        return this.pool.execute(this.queries.Product.create, [name, description, categoryId, unitPrice, images, discountId])
     }
 
 }
