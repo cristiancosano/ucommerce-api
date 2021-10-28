@@ -50,11 +50,8 @@ class UserController{
 
     static checkPassword = async (request, response) => {
         const email = request.body.email;
-        console.log(email)
         const password = request.body.password;
-        console.log(password)
         this.userModel.getByEmail(email).then(([data]) => {
-            console.log(data)
             if(data.length > 0){
                 bcrypt.compare(password, data[0].password).then(result => {
                     if(result)
