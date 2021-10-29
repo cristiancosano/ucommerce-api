@@ -103,12 +103,65 @@
 
     },
     "Order":{
+        "id":{
+            "in": ["params"],
+            "errorMessage": "Id must be an integer number",
+            "isInt": true,
+            "toInt": true
+        },
+        "customerId":{
+            "in": ["body"],
+            "errorMessage": "CategoryId must be an integer number",
+            "isInt": true,
+            "toInt": true
+        },
+        "items":{
+            "in": ["body"],
+            "errorMessage": "Must be a JSON",
+            "isJSON": true
+          
+        }
+        
+        
 
     },
     "Discount":{
+        "id":{
+            "in": ["params"],
+            "errorMessage": "Id must be an integer number",
+            "isInt": true,
+            "toInt": true
+        },
+        "rebaja":{
+            "in": ["body"],
+            "errorMessage": "Rebaja should be 3 integer numbers max",
+            "isInt": true,
+            "isLength": {
+                "options": {
+                    "decimal_digits": "1,2,3"
 
+                }
+            }
+        }
+      
     },
     "Category":{
+        "id":{
+            "in": ["params"],
+            "errorMessage": "Id must be an integer number",
+            "isInt": true,
+            "toInt": true
+        },
+        "name":{
+            "in": ["body"],
+            "errorMessage": "Name must be at least 1 ascii characters",
+            "isAscii": true,
+            "isLength": {
+                "options": {
+                    "min": 1
+                }
+            }
+        }
         
     }
 }

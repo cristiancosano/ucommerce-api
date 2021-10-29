@@ -64,30 +64,37 @@ const Order = {
 
 const Discount = {
     "create":{
-
+        "rebaja": formValidations.Discount.rebaja
     },
     "read":{
-
+        "id": formValidations.Discount.id
     },
     "update":{
+        "id": formValidations.Discount.id,
+        "rebaja": formValidations.Discount.rebaja
 
     },
     "delete":{
-
+        "id": formValidations.Discount.id
     }
 }
 
 const Category = {
     "create":{
+        "name": formValidations.Category.name
 
     },
     "read":{
+        "id": formValidations.Category.id
 
     },
     "update":{
+        "id": formValidations.Category.id,
+        "name": formValidations.Category.name
 
     },
     "delete":{
+        "id": formValidations.Category.id
 
     }
 }
