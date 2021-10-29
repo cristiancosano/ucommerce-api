@@ -1,7 +1,7 @@
 {
     "Order": {
         "getById": "SELECT *, `productCategory`.name as 'categoryName' FROM `order` LEFT JOIN `orderItem` ON `orderItem`.`orderId`=`order`.`orderId` JOIN `product` ON `orderItem`.`productId` = `product`.`productId` JOIN `productCategory` ON `product`.`categoryId` = `productCategory`.`categoryId`  WHERE `order`.`orderId` = ?",
-        "getAll": "SELECT * FROM `order`",
+        "getAll": "SELECT *, `productCategory`.name as 'categoryName' FROM `order` LEFT JOIN `orderItem` ON `orderItem`.`orderId`=`order`.`orderId` JOIN `product` ON `orderItem`.`productId` = `product`.`productId` JOIN `productCategory` ON `product`.`categoryId` = `productCategory`.`categoryId` ",
         "create": "INSERT INTO `order`(`total`, `customerId`) VALUES (?, ?)",
         "update": "UPDATE `order` SET `total`= ?,`customerId`= ? WHERE `orderId` = ?",
         "delete": "DELETE FROM `order` WHERE `orderId` = ?"

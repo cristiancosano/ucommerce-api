@@ -8,7 +8,52 @@ class OrderController{
     static productModel = new ProductModel();
 
     static index = (request, response) => {
-        this.orderModel.getAll().then(([data]) => response.send(data));
+
+        this.orderModel.getAll().then(([data]) => { 
+            
+            
+        if(data.length > 0){
+        
+            for(let y in data)
+            {
+                let object = {
+                orderId: data[y].orderId, 
+                total: data[y].total, 
+                customerId: data[y].customerId,
+                createdAt: data[y].createdAt,
+                updatedAt: data[y].updatedAt,
+                items: new Array()
+                }
+             for(let element of data){
+                console.log(element)
+                object.items.push({
+                    unitPrice: element.unitPrice,
+                    quantity: element.quantity,
+                    product:{
+                        id: element.productId,
+                        name: element.name,
+                        description: element.description,
+                        category: {
+                            id: element.categoryId,
+                            name: element.categoryName
+                        },
+                        images: element.images
+                    }
+                    
+                });
+                }
+            }
+             response.send(data)
+             }
+
+             else response.status(404).send('Order not found')
+             
+
+             
+                
+                  
+                });                   
+
 
     }
 
