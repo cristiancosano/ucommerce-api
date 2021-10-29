@@ -34,7 +34,38 @@ class OrderController{
 
     static read = (request, response) => {
         const id = request.params.id;
-        this.orderModel.getById(id).then(([data]) => (data.length > 0) ? response.send(data[0]) : response.status(404).send('Order not found'));
+        this.orderModel.getById(id).then(([data]) => {
+            if(data.length > 0){
+                let object = {
+                    orderId: data[0].orderId, 
+                    total: data[0].total, 
+                    customerId: data[0].customerId,
+                    createdAt: data[0].createdAt,
+                    updatedAt: data[0].updatedAt,
+                    items: new Array()
+                }
+                for(let element of data){
+                    console.log(element)
+                    object.items.push({
+                        unitPrice: element.unitPrice,
+                        quantity: element.quantity,
+                        product:{
+                            id: element.productId,
+                            name: element.name,
+                            description: element.description,
+                            category: {
+                                id: element.categoryId,
+                                name: element.categoryName
+                            },
+                            images: element.images
+                        }                        
+                    });
+                }
+                response.send(object) 
+            }
+            else response.status(404).send('Order not found')
+            
+        });
     }
 
     static update = (request, response) => {

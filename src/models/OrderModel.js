@@ -12,6 +12,7 @@ class OrderModel extends Model{
     }
 
     getById(id){
+        console.log(this.queries.Order.getById)
         return this.pool.execute(this.queries.Order.getById, [ id ]);
     }
 
