@@ -49,15 +49,22 @@ const Product = {
 
 const Order = {
     "create":{
+        "customerId": formValidations.Order.customerId,
+        "items": formValidations.Order.items
 
     },
     "read":{
+        "id": formValidations.Order.id
 
     },
     "update":{
+        "id": formValidations.Order.id,
+        "customerId": formValidations.Order.customerId,
+        "items": formValidations.Order.items
 
     },
     "delete":{
+        "id": formValidations.Order.id
 
     }
 };
