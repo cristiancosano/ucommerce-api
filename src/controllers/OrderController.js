@@ -8,7 +8,8 @@ class OrderController{
     static productModel = new ProductModel();
 
     static index = (request, response) => {
-        this.orderModel.getAll().then(([data]) => response.send(data));
+        //this.orderModel.getAll().then(([data]) => response.send(data));
+        this.orderModel.getAll().then(data => response.send(data)).catch(reason => response.status(400).send(reason))
 
     }
 
@@ -34,38 +35,7 @@ class OrderController{
 
     static read = (request, response) => {
         const id = request.params.id;
-        this.orderModel.getById(id).then(([data]) => {
-            if(data.length > 0){
-                let object = {
-                    orderId: data[0].orderId, 
-                    total: data[0].total, 
-                    customerId: data[0].customerId,
-                    createdAt: data[0].createdAt,
-                    updatedAt: data[0].updatedAt,
-                    items: new Array()
-                }
-                for(let element of data){
-                    console.log(element)
-                    object.items.push({
-                        unitPrice: element.unitPrice,
-                        quantity: element.quantity,
-                        product:{
-                            id: element.productId,
-                            name: element.name,
-                            description: element.description,
-                            category: {
-                                id: element.categoryId,
-                                name: element.categoryName
-                            },
-                            images: element.images
-                        }                        
-                    });
-                }
-                response.send(object) 
-            }
-            else response.status(404).send('Order not found')
-            
-        });
+        this.orderModel.getById(id).then(data => response.send(data)).catch(reason => response.status(400).send(reason));
     }
 
     static update = (request, response) => {

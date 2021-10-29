@@ -1,10 +1,11 @@
 {
     "Order": {
-        "getById": "SELECT *, `productCategory`.name as 'categoryName' FROM `order` LEFT JOIN `orderItem` ON `orderItem`.`orderId`=`order`.`orderId` JOIN `product` ON `orderItem`.`productId` = `product`.`productId` JOIN `productCategory` ON `product`.`categoryId` = `productCategory`.`categoryId`  WHERE `order`.`orderId` = ?",
-        "getAll": "SELECT * FROM `order`",
+        "getById": "SELECT *, `productCategory`.name as 'categoryName' FROM `order` LEFT JOIN `orderItem` ON `orderItem`.`orderId`=`order`.`orderId` LEFT JOIN `product` ON `orderItem`.`productId` = `product`.`productId` LEFT JOIN `productCategory` ON `product`.`categoryId` = `productCategory`.`categoryId`  WHERE `order`.`orderId` = ?",
+        "getAll": "SELECT  `order`.*, IF(product.productId IS NULL, NULL, json_object( 'id', product.productId, 'name', product.name, 'description', description, 'unitPrice', product.unitPrice, 'images', product.images, 'category', json_object('id',productCategory.categoryId, 'name', productCategory.name), 'discount', json_object('id', discount.discountId, 'rebaja', discount.rebaja)) ) as items  FROM `order` LEFT JOIN `orderItem` ON `order`.`orderId` = orderItem.orderId LEFT JOIN `product` ON orderItem.productId = product.productId LEFT JOIN productCategory  ON product.categoryId = productCategory.categoryId  LEFT JOIN discount  ON discount.discountId = product.discountId",
         "create": "INSERT INTO `order`(`total`, `customerId`) VALUES (?, ?)",
         "update": "UPDATE `order` SET `total`= ?,`customerId`= ? WHERE `orderId` = ?",
-        "delete": "DELETE FROM `order` WHERE `orderId` = ?"
+        "delete": "DELETE FROM `order` WHERE `orderId` = ?",
+        "products en json": "SELECT json_object('id', product.productId, 'name', product.name, 'description', description, 'unitPrice', product.unitPrice, 'images', product.images, 'category', json_object('id',productCategory.categoryId, 'name', productCategory.name), 'discount', json_object('id', discount.discountId, 'rebaja', discount.rebaja)) as items FROM product JOIN productCategory ON product.categoryId = productCategory.categoryId LEFT JOIN discount ON discount.discountId = product.discountId"
     },
     "OrderItem": {
         "getById": "SELECT * FROM `orderItem` WHERE `orderId` = ? AND `productId` = ?",
