@@ -52,6 +52,15 @@
                 }
             }
         },
+        "description":{
+            "in": ["body"],
+            "errorMessage": "Description must be at least 10 characters",
+            "isLength": {
+                "options": {
+                    "min": 10
+                }
+            }
+        },
         "unitPrice":{
             "in": ["body"],
             "errorMessage": "UnitPrice must be a number (max 2 decimal digits)",
@@ -68,9 +77,12 @@
         },
         "discountId":{
             "in": ["body"],
-            "errorMessage": "DiscountId must be an integer number",
+            "errorMessage": "DiscountId must be an integer number. This field is nullable not include in request or set '0' to set null in database.",
             "isInt": true,
-            "toInt": true
+            "toInt": true,
+            "optional": {
+                "checkFalsy": true
+            }
         },
         "categoryId":{
             "in": ["body"],

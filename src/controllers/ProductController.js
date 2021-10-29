@@ -15,7 +15,7 @@ class ProductController{
 
          const unitPrice = request.body.unitPrice; 
          const images = request.body.images;
-         const discountId = request.body.discountId;
+         const discountId = request.body.discountId || null;
 
          console.log(name, categoryId, unitPrice, images, discountId)
        
@@ -33,7 +33,7 @@ class ProductController{
         const categoryId = request.body.categoryId;
         const unitPrice = request.body.unitPrice; 
         const images = request.body.images;
-        const discountId = request.body.discountId;
+        const discountId = request.body.discountId || null;
         const description = request.body.description;
 
         const product={ id, name, description, categoryId, unitPrice, images, discountId }

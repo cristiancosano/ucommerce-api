@@ -21,6 +21,7 @@ const User = {
 const Product = {
     "create":{
         "name": formValidations.Product.name,
+        "description": formValidations.Product.description,
         "unitPrice": formValidations.Product.unitPrice,
         "images": formValidations.Product.images,
         "discountId": formValidations.Product.discountId,
@@ -32,6 +33,7 @@ const Product = {
     "update":{
         "id": formValidations.Product.id,
         "name": formValidations.Product.name,
+        "description": formValidations.Product.description,
         "unitPrice": formValidations.Product.unitPrice,
         "images": formValidations.Product.images,
         "discountId": formValidations.Product.discountId,
