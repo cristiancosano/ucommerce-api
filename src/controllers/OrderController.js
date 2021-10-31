@@ -8,9 +8,7 @@ class OrderController{
     static productModel = new ProductModel();
 
     static index = (request, response) => {
-        //this.orderModel.getAll().then(([data]) => response.send(data));
         this.orderModel.getAll().then(data => response.send(data)).catch(reason => response.status(400).send(reason))
-
     }
 
     static create = async (request, response) => {
@@ -18,19 +16,13 @@ class OrderController{
         const customerId = request.token.customerId;
         const items = request.body.items || null;
 
-        this.orderModel.create(total, customerId).then(([data]) => {
-            if(items != null && data != null && data.insertId != undefined){
-                for (let x in items){
-                    this.productModel.getById(items[x].productId).then(([product]) => {
-
-                    if(product != undefined && items != undefined && data.insertId != undefined)
-                        this.orderItemModel.create(product[0].unitPrice, items[x].quantity, data.insertId, items[x].productId)
-                    
-                    });
-                }
-            }
+        this.orderModel.create(total, customerId).then(data => {
+            if(items != null)
+                for (let item of items)
+                    this.orderItemModel.create(item.quantity, data.insertId, item.productId)
             response.send(data)
         })
+        .catch(error => response.status(400).send(error));
     }
 
     static read = (request, response) => {
@@ -39,7 +31,7 @@ class OrderController{
     }
 
     static update = (request, response) => {
-        const id = request.params.id;  //Usas params para obtener los parametros de la url (en CategoryRouter es :id)
+        const id = request.params.id;
         const total = request.body.total;
         const customerId = request.token.customerId;
         const items = request.body.items || null;
@@ -48,35 +40,21 @@ class OrderController{
 
         this.orderModel.update(order).then(([data]) => {
 
-              if(items != null && data != null && id != undefined)
-              {
-
-                  this.orderItemModel.deleteAll(id) //Elimina la lista de productos de la orden
-               
-                  for (let x in items){
-                     //Añade los productos con la orden a la lista
-                        this.productModel.getById(items[x].productId).then(([product]) => {
-
-                            if(product != undefined && items != undefined && id != undefined){
-                              this.orderItemModel.create(product[0].unitPrice, items[x].quantity, id, items[x].productId)
-                            }
-                    
-                       });
-                }
+            if(items != null){
+                this.orderItemModel.deleteAll(id)
+                for (let item of items)
+                this.orderItemModel.create(item.quantity, id, item.productId)
+                
             }
+
             response.send(data)
         })
+        .catch(error => response.status(400).send(error))
     }
 
     static delete = (request, response) => {
         const id = request.params.id;
-        this.orderItemModel.deleteAll(id).then(([data]) => { //Elimina la lista de productos de la orden
-       
-       
-            this.orderModel.delete(id).then((data2) => response.send(data))
-
-        })
-
+        this.orderModel.delete(id).then(data => response.send(data)).catch(error => response.status(400).send(error));
     }
 }
 

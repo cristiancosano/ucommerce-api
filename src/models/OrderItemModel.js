@@ -27,8 +27,8 @@ class OrderItemModel extends Model{
         return this.pool.execute(this.queries.OrderItem.deleteAll, [ order ]);
     }
 
-    create(unitPrice, quantity, order, product){
-        return this.pool.execute(this.queries.OrderItem.create, [unitPrice, quantity,order, product])
+    create(quantity, orderId, productId){
+        return this.pool.execute(this.queries.OrderItem.create, [quantity, orderId, productId, productId])
     }
 }
 
