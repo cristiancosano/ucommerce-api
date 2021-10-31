@@ -111,7 +111,7 @@
         },
         "customerId":{
             "in": ["body"],
-            "errorMessage": "CategoryId must be an integer number",
+            "errorMessage": "CustomerId must be an integer number",
             "isInt": true,
             "toInt": true
         },
@@ -135,6 +135,32 @@
         "rebaja":{
             "in": ["body"],
             "errorMessage": "Rebaja should be 3 integer numbers max",
+            "isInt": true,
+            "isLength": {
+                "options": {
+                    "decimal_digits": "1,2,3"
+
+                }
+            }
+        }
+      
+    },
+    "Cart":{
+        "productId":{
+            "in": ["body"],
+            "errorMessage": "product must be an integer number",
+            "isInt": true,
+            "toInt": true
+        },
+        "customerId":{
+            "in": ["params"],
+            "errorMessage": "CustomerId must be an integer number",
+            "isInt": true,
+            "toInt": true
+        },
+        "quantity":{
+            "in": ["body"],
+            "errorMessage": "quantity should be 3 integer numbers max",
             "isInt": true,
             "isLength": {
                 "options": {

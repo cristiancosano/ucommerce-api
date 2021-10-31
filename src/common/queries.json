@@ -39,6 +39,13 @@
         "update": "UPDATE product SET name=?, description=?, categoryId=?, unitPrice=?, images=?, discountId=? WHERE productId=?",
         "delete": "DELETE FROM product where productId=?"
     },
+    "Cart": {
+        "getAll": "select * from cart where customerId=?",
+        "create": "insert into cart VALUES (?, ?, ?)",
+        "update": "UPDATE cart SET quantity=? WHERE customerId=? and productId=?",
+        "delete": "DELETE FROM cart where productId=? and customerId=?",
+        "deleteAll": "DELETE FROM cart where customerId=?"
+    },
 
     "User": {
         "getById": "select * from user where customerId=?",

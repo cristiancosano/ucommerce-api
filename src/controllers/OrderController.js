@@ -10,7 +10,7 @@ class OrderController{
     static index = (request, response) => {
 
         this.orderModel.getAll().then(([data]) => { 
-            
+         custom_response = []   
             
         if(data.length > 0){
         
@@ -42,8 +42,13 @@ class OrderController{
                     
                 });
                 }
+
+                custom_response.push(object)
             }
-             response.send(data)
+
+            response.send(custom_response)
+
+             
              }
 
              else response.status(404).send('Order not found')

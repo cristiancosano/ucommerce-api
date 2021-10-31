@@ -85,6 +85,29 @@ const Discount = {
         "id": formValidations.Discount.id
     }
 }
+const Cart = {
+    "create":{
+        "customerId": formValidations.Cart.customerId,
+        "productId":formValidations.Cart.productId,
+        "quantity":formValidations.Cart.quantity
+    },
+    "read":{
+        "customerId": formValidations.Cart.customerId
+        },
+    "update":{
+        "customerId": formValidations.Cart.customerId,
+        "productId":formValidations.Cart.productId,
+        "quantity":formValidations.Cart.quantity
+
+    },
+    "delete":{
+        "customerId": formValidations.Cart.customerId,
+        "productId":formValidations.Cart.productId,
+    },
+    "deleteAll":{
+        "customerId": formValidations.Cart.customerId,
+    }
+}
 
 const Category = {
     "create":{
@@ -106,4 +129,4 @@ const Category = {
     }
 }
 
-module.exports = {User, Product, Order, Discount, Category}
+module.exports = {User, Product, Order, Discount, Category, Cart}
