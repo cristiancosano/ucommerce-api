@@ -4,8 +4,7 @@ class ProductController{
 
     static  productModel = new ProductModel();
     static index = (request, response) => {
-        this.productModel.getAll().then(([data]) => response.send(data));
-
+        this.productModel.getAll().then((data) => response.send(data)).catch(error => response.status(400).send(error))
     }
 
     static create = (request, response) => {
@@ -47,7 +46,7 @@ class ProductController{
 
     static search = (request, response) =>{
         const text = request.body.text;
-        this.productModel.getByText(text).then(([data]) => response.send(data))
+        this.productModel.getByText(text).then(data => response.send(data)).catch(reason => response.status(400).send(reason))
     }
 }
 
