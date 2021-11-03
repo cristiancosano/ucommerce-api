@@ -3,7 +3,7 @@ const OrderItemModel = require('../models/OrderItemModel')
 const ProductModel = require ('../models/ProductModel')
 class OrderController{
 
-    static  orderModel = new OrderModel();
+    static orderModel = new OrderModel();
     static orderItemModel = new OrderItemModel();
     static productModel = new ProductModel();
 
