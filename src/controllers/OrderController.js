@@ -43,10 +43,8 @@ class OrderController{
             if(items != null){
                 this.orderItemModel.deleteAll(id)
                 for (let item of items)
-                this.orderItemModel.create(item.quantity, id, item.productId)
-                
+                this.orderItemModel.create(item.quantity, id, item.productId)    
             }
-
             response.send(data)
         })
         .catch(error => response.status(400).send(error))

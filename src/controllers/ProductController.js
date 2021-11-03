@@ -13,7 +13,7 @@ class ProductController{
         const description = request.body.description;
 
          const unitPrice = request.body.unitPrice; 
-         const images = request.body.images;
+         const images = request.body.images || null;
          const discountId = request.body.discountId || null;
 
          console.log(name, categoryId, unitPrice, images, discountId)
@@ -23,20 +23,24 @@ class ProductController{
 
     static read = (request, response) => {
         const id = request.params.id;
-        this.productModel.getById(id).then(([data]) => (data.length > 0) ? response.send(data[0]) : response.status(404).send('Product not found'));
+        this.productModel.getById(id).then(data => response.send(data)).catch(reason => response.status(400).send(reason))
     }
 
-    static update = (request, response) =>{
+    static update = (request, response) => {
         const id = request.params.id; 
         const name = request.body.name;
         const categoryId = request.body.categoryId;
         const unitPrice = request.body.unitPrice; 
-        const images = request.body.images;
+        const images = request.body.images || null;
         const discountId = request.body.discountId || null;
         const description = request.body.description;
 
-        const product={ id, name, description, categoryId, unitPrice, images, discountId }
-        this.productModel.update(product).then(([data]) => response.send(data))
+        const product = { id, name, description, categoryId, unitPrice, images, discountId }
+
+        this.productModel.update(product)
+        .then(data => {
+            response.send(data)
+        }).catch(reason => response.status(400).send(reason))
     }
 
     static delete = (request, response) =>{
