@@ -9,7 +9,7 @@ const userValidation = require('../common/formValidations').User
 
 const router = Router();
 
-router.get('/auth', checkSchema(userValidation.auth), validateParams, userController.checkPassword);
+router.post('/auth', checkSchema(userValidation.auth), validateParams, userController.checkPassword);
 router.get('/', checkToken, userController.index);
 router.post('/', checkSchema(userValidation.create), validateParams, userController.create);
 router.get('/:id', checkToken, checkSchema(userValidation.read), validateParams, userController.read);
