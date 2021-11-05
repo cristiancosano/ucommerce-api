@@ -16,8 +16,8 @@
     },
 
     "Category": {
-        "getById": "select * from productCategory where categoryId=?",
-        "getAll": "select * from productCategory",
+        "getById": "select *, categoryId as id from productCategory where categoryId=?",
+        "getAll": "select *, categoryId as id from productCategory",
         "create": "insert into productCategory VALUES (NULL, ?)",
         "update": "UPDATE productCategory SET name=? WHERE categoryId=?",
         "delete": "DELETE FROM productCategory where categoryId=?"
