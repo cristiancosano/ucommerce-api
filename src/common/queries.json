@@ -36,7 +36,7 @@
         "getAll": "select * from product",
         "getByText": "SELECT * , MATCH (name,description) AGAINST (?) AS puntuacion FROM product WHERE MATCH (name, description) AGAINST (?) ORDER BY puntuacion DESC LIMIT 50",
         "create": "insert into product VALUES (NULL, ?, ?, ?, ?, ?, ?)",
-        "update": "UPDATE product SET name=?, description=?, categoryId=?, unitPrice=?, images=?, discountId=? WHERE productId=?",
+        "update": "UPDATE `product` SET `name`=?, `description`=?, `categoryId`=?, `unitPrice`=?, `images`=?, `discountId`=? WHERE `productId`=?",
         "delete": "DELETE FROM product where productId=?"
     },
     "Cart": {
