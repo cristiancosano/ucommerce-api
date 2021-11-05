@@ -10,7 +10,7 @@ const router = Router();
 
 router.get('/', productController.index);
 router.post('/', checkToken, checkSchema(productValidation.create), validateParams, productController.create);
-router.get('/search', checkSchema(productValidation.search), validateParams, productController.search);
+router.post('/search', checkSchema(productValidation.search), validateParams, productController.search);
 router.get('/:id', checkSchema(productValidation.read), validateParams, productController.read);
 router.put('/:id', checkToken, checkSchema(productValidation.update), validateParams, productController.update);
 router.delete('/:id', checkToken, checkSchema(productValidation.delete), validateParams, productController.delete);

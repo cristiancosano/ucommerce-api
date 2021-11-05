@@ -8,9 +8,7 @@ class ProductModel extends Model{
 
     getByText(text){
         return new Promise((resolve, reject) =>{
-            this.pool.execute(this.queries.Product.getByText, [text, text]).then(([data]) => {
-                (data.length) ? resolve(data) : reject('Don`t exist product with this text')
-            });
+            this.pool.execute(this.queries.Product.getByText, [text, text]).then(([data]) => resolve(data)).catch(error => reject(error));
         })
     }
 
