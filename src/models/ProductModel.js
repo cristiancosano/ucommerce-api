@@ -7,15 +7,8 @@ class ProductModel extends Model{
     }
 
     getByText(text){
-<<<<<<< HEAD
         return new Promise((resolve, reject) =>{
             this.pool.execute(this.queries.Product.getByText, [text, text]).then(([data]) => resolve(data)).catch(error => reject(error));
-=======
-        return new Promise((resolve, reject) => {
-            this.pool.execute(this.queries.Product.getByText, [text, text]).then(([data]) => {
-                (data.length) ? resolve(data) : reject('Don`t found product with this text')
-            });
->>>>>>> 1c01cfe7de90fbb3fb47b68875c680a6ab3682e4
         })
     }
 
