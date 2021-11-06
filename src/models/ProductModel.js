@@ -21,7 +21,7 @@ class ProductModel extends Model{
     getById(id){
         return new Promise((resolve, reject) => {
             this.pool.execute(this.queries.Product.getById, [ id ]).then(([data]) => {
-                (data.length) ? resolve(data) : reject(`Product with id '${id}' not found`)
+                (data.length) ? resolve(data[0]) : reject(`Product with id '${id}' not found`)
             })
         })
     }
