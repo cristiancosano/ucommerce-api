@@ -1,8 +1,11 @@
-const CategoryModel = require('../models/CategoryModel')
+const CategoryModel = require('../models/CategoryModel');
+const ProductModel = require('../models/ProductModel');
 
 class CategoryController{
 
-    static  categoryModel = new CategoryModel();
+    static categoryModel = new CategoryModel();
+    static productModel = new ProductModel();
+
     static index = (request, response) => {
         this.categoryModel.getAll().then(([data]) => response.send(data));
     }
@@ -28,6 +31,11 @@ class CategoryController{
         const id = request.params.id;
         this.categoryModel.delete(id).then(([data]) => response.send(data))
 
+    }
+
+    static readProducts = (request, response) => {
+        const id = request.params.id;
+        this.productModel.getProductsByCategory(id).then(data => response.send(data))
     }
 }
 

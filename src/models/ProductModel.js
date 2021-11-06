@@ -26,6 +26,14 @@ class ProductModel extends Model{
         })
     }
 
+    getProductsByCategory(id){
+        return new Promise((resolve, reject) => {
+            this.pool.execute(this.queries.Product.getByCategoryId, [ id ]).then(([data]) => {
+                (data.length) ? resolve(data) : reject(`Category with id '${id}' not has products`)
+            }). catch(error => reject(error))
+        })
+    }
+
     update(product){
         return new Promise((resolve, reject) => {
             console.log(product)

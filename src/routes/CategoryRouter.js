@@ -9,6 +9,7 @@ const router = Router();
 router.get('/', categoryController.index);
 router.post('/', checkToken,checkSchema(CategoryValidation.create), validateParams, categoryController.create);
 router.get('/:id', checkSchema(CategoryValidation.read), validateParams, categoryController.read);
+router.get('/:id/products', checkSchema(CategoryValidation.read), validateParams, categoryController.readProducts);
 router.put('/:id', checkToken, checkSchema(CategoryValidation.update), validateParams, categoryController.update);
 router.delete('/:id', checkToken, checkSchema(CategoryValidation.delete), validateParams, categoryController.delete);
 
