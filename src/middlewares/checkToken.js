@@ -1,7 +1,7 @@
 const TokenService = require('../services/TokenService');
 
 const checkToken = (request, response, next) => {
-    const token = request.body.token;
+    const token = request.body.token || request.query.token;
     if((request.token = TokenService.checkToken(token))){
         next();
     }

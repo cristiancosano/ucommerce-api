@@ -16,4 +16,5 @@ router.get('/:id', checkToken, checkSchema(userValidation.read), validateParams,
 router.put('/:id', checkToken, checkSchema(userValidation.update), validateParams, userController.update);
 router.delete('/:id', checkToken, checkSchema(userValidation.delete), validateParams, userController.delete);
 
+
 module.exports = router;
