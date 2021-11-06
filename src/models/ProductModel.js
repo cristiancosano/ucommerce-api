@@ -20,17 +20,13 @@ class ProductModel extends Model{
 
     getById(id){
         return new Promise((resolve, reject) => {
-            this.pool.execute(this.queries.Product.getById, [ id ]).then(([data]) => {
-                (data.length) ? resolve(data[0]) : reject(`Product with id '${id}' not found`)
-            })
+            this.pool.execute(this.queries.Product.getById, [ id ]).then(([data]) => resolve(data[0])).catch(error => reject(error))
         })
     }
 
     getProductsByCategory(id){
         return new Promise((resolve, reject) => {
-            this.pool.execute(this.queries.Product.getByCategoryId, [ id ]).then(([data]) => {
-                (data.length) ? resolve(data) : reject(`Category with id '${id}' not has products`)
-            }). catch(error => reject(error))
+            this.pool.execute(this.queries.Product.getByCategoryId, [ id ]).then(([data]) => resolve(data)).catch(error => reject(error))
         })
     }
 
