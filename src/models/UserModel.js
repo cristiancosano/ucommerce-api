@@ -34,6 +34,14 @@ class UserModel extends Model{
         return this.pool.execute(this.queries.User.auth, [ email, password ])
     }
 
+    getShoppingHistory(customer){
+        return new Promise((resolve, reject) => {
+            this.pool.execute(this.queries.Order.getByCustomer, [ customer ]).then(([data])=>{
+                (data.length) ? resolve(data) : reject(`Order with id '${customer}' not found`)
+            });
+        })
+    }
+
 }
 
 module.exports = UserModel;

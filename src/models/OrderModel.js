@@ -40,6 +40,7 @@ class OrderModel extends Model{
                 .catch(error => reject(error))
         }) 
     }
+
 }
 
 module.exports = OrderModel;

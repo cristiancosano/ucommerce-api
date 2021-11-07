@@ -15,6 +15,8 @@ router.post('/', checkSchema(userValidation.create), validateParams, userControl
 router.get('/:id', checkToken, checkSchema(userValidation.read), validateParams, userController.read);
 router.put('/:id', checkToken, checkSchema(userValidation.update), validateParams, userController.update);
 router.delete('/:id', checkToken, checkSchema(userValidation.delete), validateParams, userController.delete);
+router.get('/:id/shopping-history', checkToken, checkSchema(userValidation.read), validateParams, userController.getShoppingHistory);
+
 
 
 module.exports = router;

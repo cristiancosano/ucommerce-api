@@ -1,4 +1,3 @@
-
 const { Router } = require('express');
 const userRouter = require('./UserRouter');
 const categoryRouter = require('./CategoryRouter');

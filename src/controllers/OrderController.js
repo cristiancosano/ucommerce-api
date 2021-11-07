@@ -29,6 +29,16 @@ class OrderController{
         const id = request.params.id;
         this.orderModel.getById(id).then(data => response.send(data)).catch(reason => response.status(400).send(reason));
     }
+    static readCustomer = (request, response) => {
+        const customer = request.params.customer;
+        this.orderModel.getByCustomer(customer).then(data => 
+            {
+                console.log(data)
+                response.send(data)
+            }
+            ).catch(reason => response.status(400).send(reason))
+          ;
+    }
 
     static update = (request, response) => {
         const id = request.params.id;
