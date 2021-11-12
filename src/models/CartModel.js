@@ -28,6 +28,9 @@ class CartModel extends Model{
     checkProduct(customerId, productId){
         return this.pool.execute(this.queries.Cart.checkProduct, [ customerId, productId])
     }
+    getProductsCart(customerId){
+        return this.pool.execute(this.queries.Cart.getProductsCart, [ customerId])
+    }
 
 }
 

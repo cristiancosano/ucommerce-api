@@ -7,6 +7,10 @@ class CartController{
         const owner = request.token.customerId;
         this.cartModel.getAll(owner).then(([data]) => response.send(data));
     }
+    static getProducts = (request, response) => {
+        const owner = request.token.customerId;
+        this.cartModel.getProductsCart(owner).then(([data]) => response.send(data));
+    }
 
     static create = (request, response) => {
         const owner = request.token.customerId;

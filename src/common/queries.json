@@ -47,7 +47,8 @@
         "create": "insert into cart VALUES (?, ?, ?)",
         "update": "UPDATE cart SET quantity=? WHERE customerId=? and productId=?",
         "delete": "DELETE FROM cart where productId=? and customerId=?",
-        "deleteAll": "DELETE FROM cart where customerId=?"
+        "deleteAll": "DELETE FROM cart where customerId=?",
+        "getProductsCart": "select product.*,cart.quantity from cart join product on cart.productId = product.productId and cart.customerId = ?"
     },
 
     "User": {
