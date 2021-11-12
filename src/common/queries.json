@@ -43,6 +43,7 @@
     },
     "Cart": {
         "getAll": "select * from cart where customerId=?",
+        "checkProduct": "select * from cart where customerId=? and productId=?",
         "create": "insert into cart VALUES (?, ?, ?)",
         "update": "UPDATE cart SET quantity=? WHERE customerId=? and productId=?",
         "delete": "DELETE FROM cart where productId=? and customerId=?",
