@@ -35,7 +35,15 @@ class UserController{
         const name = request.body.name;
         const phone = request.body.phone;
         const email = request.body.email;
-        const password = await bcrypt.hash(request.body.password, this.#bcryptSaltRounds);
+        const currentPassword = request.token.password; //Contraseña actual cifrada
+        let password = '';
+        
+        if( currentPassword == request.body.password){
+            password = request.body.password
+        }
+        else{
+         password = await bcrypt.hash(request.body.password, this.#bcryptSaltRounds);
+        }
 
         const user = { id, name, phone, email, password }
         this.userModel.update(user).then(([data]) => response.send(data))
