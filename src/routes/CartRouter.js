@@ -7,8 +7,9 @@ const validateParams = require('../middlewares/validateParams');
 const router = Router();
 
 router.get('/', checkToken, cartController.index);
+router.get('/products', checkToken, cartController.getProducts);
 router.post('/', checkToken, checkSchema(cartValidation.create), validateParams, cartController.create);
 router.put('/', checkToken, checkSchema(cartValidation.update), validateParams, cartController.update);
-router.delete('/', checkToken, checkSchema(cartValidation.delete), validateParams, cartController.deleteAll);
-
+router.delete('/', checkToken, cartController.deleteAll);
+router.delete('/:productId', checkToken, cartController.delete);
 module.exports = router;

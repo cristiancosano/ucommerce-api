@@ -162,6 +162,7 @@
             "in": ["body"],
             "errorMessage": "quantity should be 3 integer numbers max",
             "isInt": true,
+            "toInt": true,
             "isLength": {
                 "options": {
                     "decimal_digits": "1,2,3"

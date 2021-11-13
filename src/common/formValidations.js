@@ -87,26 +87,18 @@ const Discount = {
 }
 const Cart = {
     "create":{
-        "customerId": formValidations.Cart.customerId,
         "productId":formValidations.Cart.productId,
         "quantity":formValidations.Cart.quantity
     },
-    "read":{
-        "customerId": formValidations.Cart.customerId
-        },
+    
     "update":{
-        "customerId": formValidations.Cart.customerId,
+       
         "productId":formValidations.Cart.productId,
         "quantity":formValidations.Cart.quantity
 
     },
-    "delete":{
-        "customerId": formValidations.Cart.customerId,
-        "productId":formValidations.Cart.productId,
-    },
-    "deleteAll":{
-        "customerId": formValidations.Cart.customerId,
-    }
+   
+
 }
 
 const Category = {
