@@ -6,7 +6,7 @@ const cartValidation = require('../common/formValidations').Cart
 const validateParams = require('../middlewares/validateParams');
 const router = Router();
 
-router.get('/', cartController.index);
+router.get('/', checkToken, cartController.index);
 router.post('/', checkToken, checkSchema(cartValidation.create), validateParams, cartController.create);
 router.put('/', checkToken, checkSchema(cartValidation.update), validateParams, cartController.update);
 router.delete('/', checkToken, checkSchema(cartValidation.delete), validateParams, cartController.deleteAll);
