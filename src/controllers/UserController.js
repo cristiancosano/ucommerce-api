@@ -76,12 +76,7 @@ class UserController{
 
    static getShoppingHistory = async (request, response) => {
        const id = request.params.id;
-       console.log(id)
-       this.userModel.getShoppingHistory(id).then((data) => { 
-           console.log(data),
-           console.log(data.length),
-       response.send(data)});
-
+       this.userModel.getShoppingHistory(id).then((data) => response.send(data));
     }
 }
 
