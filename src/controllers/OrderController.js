@@ -14,10 +14,13 @@ class OrderController{
     static create = async (request, response) => {
         const total = request.body.total;
         const customerId = request.token.customerId;
-        const items = request.body.items || null;
+        let items = request.body.items || null;
+
+    
 
         this.orderModel.create(total, customerId).then(data => {
             if(items != null)
+                if(typeof items == 'string') items = JSON.parse(items)
                 for (let item of items)
                     this.orderItemModel.create(item.quantity, data.insertId, item.productId)
             response.send(data)
@@ -33,7 +36,6 @@ class OrderController{
         const customer = request.params.customer;
         this.orderModel.getByCustomer(customer).then(data => 
             {
-                console.log(data)
                 response.send(data)
             }
             ).catch(reason => response.status(400).send(reason))
